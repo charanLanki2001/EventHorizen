@@ -1,0 +1,17 @@
+{% extends 'home.html' %}
+{% block title %}Success{% endblock %}
+{% block video %}{% endblock video %}
+{% block content %}
+<!-- Add your custom CSS styles here -->
+
+<div class="container">
+  <div class="col-md-8 offset-md-2">
+    <div class="alert alert-success mt-3">
+      Event details have been successfully updated.
+    </div>
+    <a href="{% url 'update_event' %}" class="btn btn-primary">OK</a>
+  </div>
+</div>
+
+<!-- Add your custom JavaScript here -->
+{% endblock %}

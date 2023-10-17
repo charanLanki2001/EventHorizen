@@ -1,0 +1,147 @@
+{% extends 'home.html' %} 
+{% load static %}
+
+{% block title %}About_Us{% endblock %}
+{% block video %}{% endblock video %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <!-- Repeat the card structure for different cards -->
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="your-css-file.css">
+  <title>About Us</title>
+  <style>
+    /* Reset some default styles for better compatibility */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Set a background image for the entire page */
+body {
+  
+  background-size: cover;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Create a header style */
+header {
+  
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Style the team container using CSS Grid */
+.team-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Style the team member card */
+.team-member {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+/* Hover effect for team member cards */
+.team-member:hover {
+  transform: scale(1.05);
+}
+
+/* Style team member names */
+.team-member h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Style team member roles */
+.team-member p {
+  font-size: 16px;
+  color: #666;
+}
+
+/* Style team member images */
+.team-member img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+</style>
+</head>
+<body>
+  <div>
+    <h1>About Event Horizon</h1>
+    <p>Welcome to Event Horizon, your gateway to the world of college events, talent encouragement, and sponsorship opportunities. We are a platform dedicated to the promotion and publication of college events and the nurturing of student talent.</p>
+</div>
+
+<div>
+    <h2>Our Mission:</h2>
+    <p>At Event Horizon, our mission is to provide college students with a dynamic platform where they can showcase their skills and talents through various events and activities. We believe in the potential of young minds and are committed to nurturing their abilities and giving them the exposure they deserve.</p>
+</div>
+
+<div>
+    <h2>What We Offer:</h2>
+    <ol>
+        <li><strong>Event Promotion:</strong> Event Horizon is your go-to destination for promoting college events. Whether it's a cultural festival, academic conference, sports competition, or any other student-driven activity, we provide a stage for it to shine. Our platform ensures that your event gets the visibility it needs to be a success.</li>
+        <li><strong>Talent Encouragement:</strong> We strongly believe that every student possesses unique talents waiting to be discovered. Event Horizon is designed to empower students by giving them opportunities to showcase their skills. We host various talent competitions, workshops, and open mics to inspire and uplift the creative spirits within the college community.</li>
+        <li><strong>Sponsorship Opportunities:</strong> We understand that organizing events can be financially challenging for college students. To alleviate this burden, we offer sponsorship opportunities. Companies and organizations interested in supporting student initiatives can partner with us to sponsor events and make a positive impact on the lives of aspiring young talents.</li>
+    </ol>
+</div>
+
+<div>
+    <h2>Why Choose Event Horizon:</h2>
+    <ul>
+        <li><strong>Community:</strong> Event Horizon brings together a community of like-minded individuals who are passionate about college events, talent development, and student empowerment.</li>
+        <li><strong>Accessibility:</strong> Our platform is user-friendly, making it easy for both event organizers and participants to navigate and utilize our services.</li>
+        <li><strong>Networking:</strong> By being a part of Event Horizon, you gain access to a vast network of students, event enthusiasts, and potential sponsors.</li>
+        <li><strong>Impact:</strong> We believe in making a difference in the lives of college students by providing them with a platform to learn, grow, and shine.</li>
+    </ul>
+</div>
+
+<p>Join us at Event Horizon and be part of a vibrant and supportive community where college events thrive, talent is nurtured, and sponsorship opportunities abound. Together, we can create a brighter future for college students, full of opportunities and success.</p>
+
+  <header>
+    <h1>About Our Team</h1>
+  </header>
+  
+  <div class="team-container">
+    <div class="team-member">
+      <img src="{% static 'img/about2.jpg' %}" alt="Charan N">
+      <h3>Charan N</h3>
+      <p>Role: Developer</p>
+    </div>
+    <div class="team-member">
+      <img src="varun.jpg" alt="Varun J">
+      <h3>Varun J</h3>
+      <p>Role: Designer</p>
+    </div>
+    <div class="team-member">
+      <img src="arun.jpg" alt="Arun Kumar">
+      <h3>Arun Kumar</h3>
+      <p>Role: Project Manager</p>
+    </div>
+    <!-- Add more team members as needed -->
+  </div>
+</body>
+</html>
+
+  </div>
+</div>
+{% endblock %}

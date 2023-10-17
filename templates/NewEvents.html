@@ -1,0 +1,60 @@
+{% extends 'home.html' %}
+{% load static %}
+
+
+{% block title %}NewEvents{% endblock %}
+{% block video %}{% endblock video %}
+
+    <!-- Repeat the card structure for different cards -->
+    {% block content %}
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-6 m-2">
+          <div class="card" style="width: 18rem;">
+            <img src="{% static 'img/e1.png' %}"  style= width="200" height="200" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 m-2">
+          <div class="card" style="width: 18rem;">
+            <img src="{% static 'img/e2.jpg' %}" class="card-img-top"  style= width="200" height="200" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+         
+        <div class="col-lg-3 col-md-4 col-sm-6 m-2">
+          <div class="card" style="width: 18rem;">
+            <img src="{% static 'img/e3.png' %}"  style= width="200" height="200" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+         
+        <div class="col-lg-3 col-md-4 col-sm-6 m-2">
+          <div class="card" style="width: 18rem;">
+            <img src="{% static 'img/e4.jpg' %}"   style= width="200" height="200" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

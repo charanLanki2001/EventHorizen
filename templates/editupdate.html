@@ -1,0 +1,122 @@
+{% extends 'home.html' %}
+{% block title %}Update Event{% endblock %}
+{% block video %}{% endblock video %}
+{% block content %}
+<!-- Custom CSS styles -->
+<style>
+  .container {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center; /* Center-align the container content */
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+    text-align: left; /* Left-align form elements within the container */
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+  .btn-success {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+
+  .btn-success:hover {
+    background-color: #218838;
+  }
+
+  /* Center-align the form button */
+  .btn-success.btn-block {
+    margin: 0 auto;
+  }
+</style>
+
+
+<div class="container">
+  <div class="col-md-8 offset-md-2">
+    <h2 class="text-center my-3">Update Event</h2>
+    <form method="POST" class="text-left" id="updateEventForm">
+      {% csrf_token %}
+      <!-- College Name Field -->
+      <div class="form-group">
+        <label for="collegeName">College Name:</label>
+        {{ form.college_name }}
+      </div>
+
+      <!-- Event Name Field -->
+      <div class="form-group">
+        <label for="eventName">Event Name:</label>
+        {{ form.event_name }}
+      </div>
+
+      <!-- Address Field -->
+      <div class="form-group">
+        <label for="address">Address:</label>
+        {{ form.address }}
+      </div>
+
+      <!-- College Website Field -->
+      <div class="form-group">
+        <label for="collegeWebsite">College Website:</label>
+        {{ form.college_website }}
+      </div>
+
+      <!-- Event Datetime Field -->
+      <div class="form-group">
+        <label for="eventDatetime">Event Date and Time:</label>
+        {{ form.event_datetime }}
+      </div>
+
+      <!-- Event Brochure Field -->
+      <div class="form-group">
+        <label for="eventBrochure">Event Brochure:</label>
+        {{ form.event_brochure }}
+      </div>
+
+      <!-- Coordinator Name Field -->
+      <div class="form-group">
+        <label for="coordinatorName">Coordinator Name:</label>
+        {{ form.coordinator_name }}
+      </div>
+
+      <!-- Coordinator Contact Field -->
+      <div class="form-group">
+        <label for="coordinatorContact">Coordinator Contact:</label>
+        {{ form.coordinator_contact }}
+      </div>
+
+      <!-- Entry Fee Field -->
+      <div class="form-group">
+        <label for="entryFee">Entry Fee:</label>
+        {{ form.entry_fee }}
+      </div>
+
+      <!-- Event Description Field -->
+      <div class="form-group">
+        <label for="eventDescription">Event Description:</label>
+        {{ form.event_description }}
+      </div>
+
+      <button type="submit" class="btn btn-success btn-block">Save Changes</button>
+    </form>
+    {% if delay_redirect %}
+    <!-- JavaScript code to trigger the redirection after displaying the success message -->
+    <script>
+      setTimeout(function() {
+        alert("Event details have been successfully updated.");
+        window.location.href = "{% url 'update_event' %}";
+      }, 1000);  // Redirect after a 3-second delay (adjust as needed)
+    </script>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

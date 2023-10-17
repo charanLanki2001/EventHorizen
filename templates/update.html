@@ -1,0 +1,59 @@
+{% extends 'home.html' %}
+
+{% block title %}Update_Event{% endblock %}
+{% block video %}{% endblock video %}
+{% block content %}
+{{ form.as_p }}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12"> <!-- Change to col-md-12 to use the full page width -->
+      <h2 class="text-center my-3">Update Event</h2>
+      <div class="table-responsive"> <!-- Add the table-responsive class here -->
+        <table class="table table-dark striped table-hover table-bordered table-primary align-middle">
+          <thead class="table-light">
+            <caption>Events Table</caption>
+            <tr>
+              <th>Event Name</th>
+              <th>College Name</th>
+              <th>Address</th>
+              <th>College Website</th>
+              <th>Event Date and Time</th>
+              <th>Coordinator Name</th>
+              <th>Coordinator Contact</th>
+              <th>Entry_Fee</th>
+              <th></th>
+            </tr>
+          </thead>
+          
+            {% for event in events %}
+            <tr class="table table-success table-striped-bordered">
+              <td>{{ event.event_name }}</td>
+              <td>{{ event.college_name }}</td>
+              <td>{{ event.address }}</td>
+              <td>{{ event.college_website }}</td>
+              <td>{{ event.event_datetime }}</td>
+              <td>{{ event.coordinator_name }}</td>
+              <td>{{ event.coordinator_contact }}</td>
+              <td>{{ event.entry_fee }}</td>
+              <td>
+                <form method="POST" action="{% url 'update_event' %}">
+                  {% csrf_token %}
+                  {{ form.as_p }}
+                  <!-- Update this line -->
+                  <a href="{% url 'edit_event' event.id %}" class="btn btn-success m-2 md-sm" style="color:green">Update</a>
+                </form>
+                <form method="POST" action="{% url 'delete_event' %}">
+                  {% csrf_token %}
+                  <input type="hidden" name="event_id" value="{{ event.id }}">
+                  <button type="submit" class="btn btn-danger m-2 md-sm" style="color:red;">Delete</button>
+                </form>
+              </td>
+          
+            {% endfor %}
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

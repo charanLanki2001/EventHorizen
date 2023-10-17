@@ -1,0 +1,79 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block title %}Payment{% endblock %}
+{% block video %}{% endblock video %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/payment.css' %}"> 
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <!-- Button to trigger the modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#errorModal" style="display:none;">
+                Show Error
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="errorModalLabel">Error</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Display the error message here -->
+                            {{ error_message }}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <form id="payment-form" method="post" action="{% url 'payment' event.id %}">
+                {% csrf_token %}
+                <!-- Other payment fields go here -->
+                <input type="hidden" name="event_id" value="{{ event.id }}">
+                <div class="form-group">
+                    <label for="event_name">Event Name:</label>
+                    <label for="event_name">{{ event.event_name }}</label>
+                </div>
+                <div class="form-group">
+                    <label for="user_email">Your Email:</label>
+                    <input type="email" id="user_email" name="user_email" class="form-control" required>
+                </div>
+                <!-- Dummy input fields for demonstration -->
+                <div class="form-group">
+                    <label for="card_number">Card Number:</label>
+                    <input type="text" id="card_number" name="card_number" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="expiration_date">Expiration Date:</label>
+                    <input type="text" id="expiration_date" name="expiration_date" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" name="cvv" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-success">Pay {{ event.entry_fee }}</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Add the loading elements inside your form -->
+<div class="loading-spinner" id="loading-spinner"></div>
+<div class="loading-text" id="loading-text">Loading....</div>
+<script>
+    // Show loading spinner and text when the form is submitted
+    document.getElementById("payment-form").addEventListener("submit", function () {
+        document.getElementById("loading-spinner").style.display = "block";
+        document.getElementById("loading-text").style.display = "block";
+    });
+</script>
+
+{% endblock %}

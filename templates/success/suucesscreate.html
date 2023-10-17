@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Success Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            fill: #4CAF50;
+        }
+        .success-heading {
+            color: #4CAF50;
+            margin-top: 20px;
+        }
+        .success-message {
+            margin-top: 10px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+            border: 2px solid #4CAF50;
+            padding: 8px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .back-link:hover {
+            background-color: #4CAF50;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg class="success-icon" viewBox="0 0 24 24">
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+        </svg>
+        <h2 class="success-heading">Event Created Successfully!</h2>
+        <p class="success-message">Your event has been successfully created.</p>
+        <a href="{% url 'home' %}" class="back-link">Back to Home</a><br></br>
+        <div>
+        <p class="success-message">If you want to edit the Event information please Click Here!!
+        </p>
+        <a href="{% url 'update_event' %}" class="back-link">On Change</a>
+    </div>
+    </div>
+</body>
+</html>

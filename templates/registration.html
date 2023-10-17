@@ -1,0 +1,105 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}Registration Details - {{ event.event_name }}{% endblock %}
+{% block video %}{% endblock video %}
+{% block content %}
+<style>
+    /* Custom CSS styles for an attractive layout */
+    .registration-container {
+        background-color: #f5f5f5;
+        padding: 50px 0;
+    }
+
+    .registration-card {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+    }
+
+    /* Custom title and text styles */
+    .event-title {
+        font-size: 28px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .event-text {
+        font-size: 18px;
+        color: #666;
+        margin-bottom: 15px;
+    }
+
+    /* Style the brochure container */
+    .brochure-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .brochure-link {
+        display: inline-block;
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    .brochure-link:hover {
+        background-color: #0056b3;
+    }
+    .register_button {
+        display: inline-block;
+        background-color: #007bff;
+        color: #fff;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 5px;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 18px;
+        transition: background-color 0.3s;
+        margin-top: 20px;
+        cursor: pointer;
+        text-decoration: none; /* Remove underline for links */
+    }
+
+    .register_button:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div class="registration-container">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card registration-card">
+                    <h1 class="text-center text-dark mb-4 event-title">{{ event.event_name }}</h1>
+                    <p class="event-text"><strong>College Name:</strong> {{ event.college_name }}</p>
+                    <p class="event-text"><strong>Event Date and Time:</strong> {{ event.event_datetime }}</p>
+                    <p class="event-text"><strong>College Website:</strong> {{ event.college_website }}</p>
+                    <p class="event-text"><strong>Address:</strong> {{ event.address }}</p>
+                    <p class="event-text"><strong>Description:</strong> {{ event.event_description }}</p>
+                    <p class="event-text"><strong>Entry Fee:</strong> {{ event.entry_fee }}</p>
+                    <!-- Brochure Section -->
+                    {% if event.event_brochure %}
+                    <div class="brochure-container">
+                        <h2 class="event-title">Event Brochure</h2>
+                        <a href="{{ event.event_brochure.url }}" class="brochure-link" target="_blank">View Brochure</a>
+                    </div>
+                    {% endif %}
+
+                    <!-- Register Button -->
+                    <div class="text-center">
+                        <a  href="{% url 'payment' event.id %}" class="btn btn-primary register_button" style="width: 100%";>Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

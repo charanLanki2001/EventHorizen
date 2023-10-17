@@ -1,0 +1,118 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block title %}New Events{% endblock %}
+{% block video %}{% endblock video %}
+
+{% block content %}
+<style>
+    /* Custom CSS styles for a more attractive layout */
+    .events-container {
+        background-image: url("{% static 'img/background.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        padding: 50px 0;
+    }
+
+    .event-card {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+    }
+
+    .event-card img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .event-card-details {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+    }
+
+    .event-card-details.show-details {
+        max-height: 500px;
+    }
+
+    /* Custom button styles */
+    .btn-register {
+        background-color: #28a745;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        text-transform: uppercase;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+
+    .btn-register:hover {
+        background-color: #218838;
+    }
+
+    /* Custom title and text styles */
+    .event-title {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .event-text {
+        font-size: 16px;
+        color: #666;
+    }
+</style>
+
+<div class="events-container">
+    <div class="container">
+        <h1 class="text-center text-white my-4">Explore Exciting Events</h1>
+        <div class="row">
+            {% for event in events %}
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="card event-card">
+                    <img src="{% static 'img/e1.png' %}" class="card-img-top" alt="Event Image">
+                    <div class="card-body">
+                        <h5 class="card-title event-title">{{ event.event_name }}</h5>
+                        <p class="card-text event-text">{{ event.college_name }}</p>
+                        <p class="card-text event-text">{{ event.event_datetime }}</p>
+                        <div class="event-card-details" id="event-details-{{ event.id }}">
+                            <h2 class="my-3 event-title">{{ event.event_name }}</h2>
+                            <p class="event-text"><strong>College Name:</strong> {{ event.college_name }}</p>
+                            <p class="event-text"><strong>College Website:</strong> {{ event.college_website }}</p>
+                            <p class="event-text"><strong>Address:</strong> {{ event.address }}</p>
+                            <p class="event-text"><strong>Date and Time:</strong> {{ event.event_datetime }}</p>
+                            <p class="event-text"><strong>Description:</strong> {{ event.event_description }}</p>
+                            
+                            {% if event.event_brochure %}
+                            <a href="{{ event.event_brochure.url }}" class="btn btn-info btn-block mt-2" target="_blank">Brochure</a>
+                          {% endif %}
+                            <a href="#" class="btn btn-primary" onclick="toggleDetails({{ event.id }})">Show Less</a>
+                        </div>
+                        <a href="{% url 'registration_details' event.id %}" class="btn btn-register btn-block mt-3">Intrested</a>
+                       
+                        <a href="#" class="btn btn-primary btn-block" onclick="toggleDetails({{ event.id }})">Show
+                            More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleDetails(eventId) {
+        var detailsDiv = document.getElementById("event-details-" + eventId);
+        if (detailsDiv.classList.contains("show-details")) {
+            detailsDiv.classList.remove("show-details");
+        } else {
+            detailsDiv.classList.add("show-details");
+        }
+    }
+</script>
+
+{% endblock %}
