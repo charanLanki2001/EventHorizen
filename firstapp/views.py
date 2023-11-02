@@ -257,28 +257,30 @@ def registration_details(request,event_id):
    return render(request, 'registration.html', context)
 
 
-
-
 from django.shortcuts import render, get_object_or_404
-from .models import Event
-from django.core.mail import send_mail
+from .models import Event, Payment
+from django.core.mail import send_mail, EmailMessage
 from django.conf import settings
 import logging
+from django.utils import timezone
 
 def payment(request, event_id):
     event = get_object_or_404(Event, pk=event_id)
     email_sent = 0  # Initialize email_sent with a default value
 
+    # Count the number of registered users for the event
+    registered_users_count = Payment.objects.filter(eventname=event.event_name).count()
+
     if request.method == 'POST':
         # Handle the payment processing logic here (you can simulate a successful payment)
         user_email = request.POST.get('user_email')
         entry_fee = event.entry_fee 
-        
+
         # Simulate a successful payment
         
         # Send a confirmation email
         subject = 'Payment Confirmation'
-        message = 'Thank you for your payment. Your payment was successful.'
+        message = f'Thank you for your payment for the {event.event_name} Event. Your payment was successful.'
         from_email = settings.EMAIL_HOST_USER
         recipient_list = [user_email]
         
@@ -297,7 +299,7 @@ def payment(request, event_id):
                 payment.save()
 
                 # Render the payment success template with the user's email and event details
-                context = {'user_email': user_email, 'event': event}
+                context = {'user_email': user_email, 'event': event, 'registered_users_count': registered_users_count + 1}
                 return render(request, 'payment/payment_success.html', context)
             else:
                 # Log the error
@@ -311,7 +313,9 @@ def payment(request, event_id):
             logging.error(f'Exception occurred while sending email: {str(e)}')
 
     # Handle GET requests or invalid submissions
-    return render(request, 'payment/payment.html', {'event': event, 'email_sent': email_sent})
+    return render(request, 'payment/payment.html', {'event': event, 'email_sent': email_sent, 'registered_users_count': registered_users_count})
+
+
 
 
 def payment_success(request,event_id):
@@ -343,7 +347,29 @@ def user_registered_events(request, event_id=None):
 
 
 
+def register_Event(request):
+    return render (request, 'register_Events.html')
 
+
+from django.shortcuts import render
+from .models import Event, Payment
+
+def Registered_List(request):
+    # Get the events created by the logged-in user
+    user = request.user
+    events = Event.objects.filter(username=user)
+
+    # Calculate the number of registered users for each event
+    event_data = []
+    for event in events:
+        registered_users_count = Payment.objects.filter(eventname=event.event_name).count()
+        event_data.append({'event': event, 'registered_users_count': registered_users_count})
+
+    context = {
+        'events_data': event_data,
+    }
+
+    return render(request, 'registered_list.html', context)
 
 
 

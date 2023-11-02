@@ -92,17 +92,20 @@
             </a>
           </li>
           <li class="nav-item gx-5">
+            <a class="nav-link" href="{% url 'register_Events' %}">
+              <i class="fa fa-reply-all"></i> Registered Events
+            </a>
+          </li> 
+        
+
+          
+          <li class="nav-item gx-5">
             <a class="nav-link" href="{% url 'about_us' %}">
               <i class="fas fa-info-circle"></i> About Us
             </a>
           </li>
-          <li class="nav-item gx-5">
-            <a class="nav-link" href="{% url 'user_registered_events_without_id' %}">
-              <i class="fas fa-info-circle"></i> Registered Events
-            </a>
-          </li>
-        </ul>
 
+ 
         <div class="btn-group position-absolute top-0 end-0 m-3  ">
           <button type="button" class="btn btn-light dropdown-toggle m-3 rounded-circle border border-warning" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-user-secret" aria-hidden="true"> User</i>

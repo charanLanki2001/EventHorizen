@@ -1,0 +1,55 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block title %}New Events{% endblock %}
+{% block video %}{% endblock video %}
+{% block content %}
+<style>
+    .event-list {
+        list-style: none;
+        padding: 0;
+      }
+      
+      .event-item {
+        border: 1px solid #ddd;
+        margin: 10px;
+        padding: 10px;
+        background-color: #f7f7f7;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .event-name {
+        font-size: 2.2rem;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      
+      .college-name {
+        font-size: 1rem;
+        color: #555;
+      }
+      
+      .registered-users-count {
+        font-size: 3rem;
+        color: #007bff;
+      }
+      
+</style>
+  <h1>Your Events</h1>
+  <ul class="event-list">
+    {% for event_data in events_data %}
+      <li class="event-item">
+        <div class="event-details">
+          <strong class="event-name">{{ event_data.event.event_name }}</strong>
+          <p class="college-name">College: {{ event_data.event.college_name }}</p>
+        </div>
+        <div class="user-details">
+          <p class="registered-users-count">Registered Users: {{ event_data.registered_users_count }}</p>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
+

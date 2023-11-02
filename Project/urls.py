@@ -20,13 +20,14 @@ urlpatterns = [
     path('delete_event/', views.delete_event, name='delete_event'),
     path('Aboutus/', views.about_us, name='about_us'),
     path('sucess/', views.success_page, name='success_page'),
-    
+
     path('registration/<int:event_id>/', views.registration_details, name='registration_details'),
     path('payment/<int:event_id>/', views.payment, name='payment'),
     path('payment_success/<int:event_id>/', views.payment_success, name='payment_success'),
 
-   path('user-registered-events/', views.user_registered_events, name='user_registered_events_without_id'),
-    path('user-registered-events/<int:event_id>/', views.user_registered_events, name='user_registered_events_with_id'),
+   path('List/', views.register_Event, name='register_Events'),
+   path('Registered_List/', views.Registered_List, name='Registered_List'),
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
